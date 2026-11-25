@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Registration Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="portal-header">
+      <div class="badge">Academic Year 2026–2027</div>
+      <h1>Student Registration Portal</h1>
+      <p>Complete all required fields accurately to generate your official registration receipt.</p>
+    </header>
+
+    <div id="formAlert" class="alert hidden" role="alert">
+      Please review and correct the highlighted fields before submitting.
+    </div>
+
+    <form id="registrationForm" novalidate>
+      <!-- 1. Personal Information -->
+      <section class="card">
+        <h2>1. Personal Information</h2>
+        <div class="photo-row">
+          <div class="photo-preview-box" id="photoPreviewBox">
+            <img id="photoPreview" src="" alt="Student Photo Preview" class="hidden" />
+            <span id="photoPlaceholder">Passport Photo<br><small>(JPG/PNG, Max 2MB)</small></span>
+          </div>
+          <div class="form-group flex-1">
+            <label for="studentPhoto">Upload Passport Size Photo <span class="req">*</span></label>
+            <input type="file" id="studentPhoto" accept="image/jpeg, image/png" required />
+            <span class="error-msg" id="error-studentPhoto"></span>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="firstName">First Name <span class="req">*</span></label>
+            <input type="text" id="firstName" placeholder="e.g., Abhinav" required />
+            <span class="error-msg" id="error-firstName"></span>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name <span class="req">*</span></label>
+            <input type="text" id="lastName" placeholder="e.g., Gautam" required />
+            <span class="error-msg" id="error-lastName"></span>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="form-group">
+            <label for="dob">Date of Birth <span class="req">*</span></label>
+            <input type="date" id="dob" required />
+            <span class="error-msg" id="error-dob"></span>
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender <span class="req">*</span></label>
+            <select id="gender" required>
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Non-Binary">Non-Binary</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+            <span class="error-msg" id="error-gender"></span>
+          </div>
+          <div class="form-group">
+            <label for="bloodGroup">Blood Group</label>
+            <select id="bloodGroup">
+              <option value="">Optional</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Contact Details -->
+      <section class="card">
+        <h2>2. Contact Details</h2>
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" placeholder="student@example.com" required />
+            <span class="error-msg" id="error-email"></span>
+          </div>
+          <div class="form-group">
+            <label for="phone">Mobile Number <span class="req">*</span></label>
+            <div class="phone-input">
+              <span class="country-code">+91</span>
+              <input type="tel" id="phone" placeholder="9876543210" maxlength="10" required />
+            </div>
+            <span class="error-msg" id="error-phone"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Permanent Address <span class="req">*</span></label>
+          <textarea id="address" rows="2" placeholder="House/Flat No., Street, Locality" required></textarea>
+          <span class="error-msg" id="error-address"></span>
+        </div>
+
+        <div class="grid-3">
+          <div class="form-group">
+            <label for="city">City <span class="req">*</span></label>
+            <input type="text" id="city" placeholder="City" required />
+            <span class="error-msg" id="error-city"></span>
+          </div>
+          <div class="form-group">
+            <label for="state">State <span class="req">*</span></label>
+            <input type="text" id="state" placeholder="State" required />
+            <span class="error-msg" id="error-state"></span>
+          </div>
+          <div class="form-group">
+            <label for="pincode">PIN Code <span class="req">*</span></label>
+            <input type="text" id="pincode" placeholder="6-digit PIN" maxlength="6" required />
+            <span class="error-msg" id="error-pincode"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Academic Details -->
+      <section class="card">
+        <h2>3. Academic Details</h2>
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="program">Program / Degree <span class="req">*</span></label>
+            <select id="program" required>
+              <option value="">Select Program</option>
+              <option value="B.Sc. Biotechnology">B.Sc. Biotechnology</option>
+              <option value="B.Tech Biotechnology">B.Tech Biotechnology</option>
+              <option value="B.Sc. Microbiology">B.Sc. Microbiology</option>
+              <option value="B.Tech Computer Science">B.Tech Computer Science</option>
+              <option value="B.Com (Hons)">B.Com (Hons)</option>
+              <option value="B.A. Humanities">B.A. Humanities</option>
+            </select>
+            <span class="error-msg" id="error-program"></span>
+          </div>
+          <div class="form-group">
+            <label for="semester">Admission Year / Semester <span class="req">*</span></label>
+            <select id="semester" required>
+              <option value="">Select Year / Semester</option>
+              <option value="1st Year - Semester I">1st Year - Semester I</option>
+              <option value="2nd Year - Semester III">2nd Year - Semester III</option>
+              <option value="3rd Year - Semester V">3rd Year - Semester V</option>
+              <option value="4th Year - Semester VII">4th Year - Semester VII</option>
+            </select>
+            <span class="error-msg" id="error-semester"></span>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="prevSchool">Previous School / College <span class="req">*</span></label>
+            <input type="text" id="prevSchool" placeholder="Name of last attended institution" required />
+            <span class="error-msg" id="error-prevSchool"></span>
+          </div>
+          <div class="form-group">
+            <label for="percentage">Aggregate Percentage / CGPA <span class="req">*</span></label>
+            <input type="text" id="percentage" placeholder="e.g., 88.5% or 8.9 CGPA" required />
+            <span class="error-msg" id="error-percentage"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Parent / Guardian Details -->
+      <section class="card">
+        <h2>4. Parent / Guardian Details</h2>
+        <div class="grid-3">
+          <div class="form-group">
+            <label for="guardianName">Guardian Full Name <span class="req">*</span></label>
+            <input type="text" id="guardianName" placeholder="Parent or Guardian Name" required />
+            <span class="error-msg" id="error-guardianName"></span>
+          </div>
+          <div class="form-group">
+            <label for="guardianRelation">Relationship <span class="req">*</span></label>
+            <select id="guardianRelation" required>
+              <option value="">Select Relationship</option>
+              <option value="Father">Father</option>
+              <option value="Mother">Mother</option>
+              <option value="Legal Guardian">Legal Guardian</option>
+            </select>
+            <span class="error-msg" id="error-guardianRelation"></span>
+          </div>
+          <div class="form-group">
+            <label for="guardianPhone">Guardian Mobile <span class="req">*</span></label>
+            <div class="phone-input">
+              <span class="country-code">+91</span>
+              <input type="tel" id="guardianPhone" placeholder="9876543210" maxlength="10" required />
+            </div>
+            <span class="error-msg" id="error-guardianPhone"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Declaration -->
+      <section class="card">
+        <div class="checkbox-group">
+          <input type="checkbox" id="declaration" required />
+          <label for="declaration">
+            I hereby declare that all the information provided above is true and accurate to the best of my knowledge. <span class="req">*</span>
+          </label>
+        </div>
+        <span class="error-msg" id="error-declaration"></span>
+
+        <div class="form-actions">
+          <button type="reset" class="btn btn-secondary" id="resetBtn">Reset Form</button>
+          <button type="submit" class="btn btn-primary">Submit Registration</button>
+        </div>
+      </section>
+    </form>
+  </div>
+
+  <!-- Receipt Modal -->
+  <div id="receiptModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="modal-header no-print">
+        <h3>Official Admission Receipt</h3>
+        <button id="closeModalBtn" class="close-btn" aria-label="Close">&times;</button>
+      </div>
+      <div id="receiptPrintable" class="receipt-body">
+        <div class="receipt-top">
+          <div>
+            <h2>STUDENT REGISTRATION RECEIPT</h2>
+            <p class="receipt-sub">Academic Session 2026–2027</p>
+            <p><strong>Registration ID:</strong> <span id="recId"></span></p>
+            <p><strong>Submitted On:</strong> <span id="recDate"></span></p>
+          </div>
+          <img id="recPhoto" src="" alt="Student Photo" class="receipt-photo" />
+        </div>
+        <table class="receipt-table" id="receiptTable"></table>
+        <p class="receipt-footer">This is a computer-generated registration acknowledgment.</p>
+      </div>
+      <div class="modal-actions no-print">
+        <button id="printBtn" class="btn btn-primary">Print / Save PDF</button>
+        <button id="downloadJsonBtn" class="btn btn-secondary">Download JSON</button>
+        <button id="downloadCsvBtn" class="btn btn-secondary">Download CSV</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
